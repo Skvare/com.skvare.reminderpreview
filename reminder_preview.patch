@@ -1,0 +1,19 @@
+diff --git a/Civi/ActionSchedule/RecipientBuilder.php b/Civi/ActionSchedule/RecipientBuilder.php
+index 2366b69fdd..18a7679e0f 100644
+--- a/Civi/ActionSchedule/RecipientBuilder.php
++++ b/Civi/ActionSchedule/RecipientBuilder.php
+@@ -547,9 +547,12 @@ WHERE      $group.id = {$groupId}
+     if ($this->resetOnTriggerDateChange() && ($phase == self::PHASE_RELATION_FIRST || $phase == self::PHASE_RELATION_REPEAT)) {
+       $actionLogColumns[] = "reference_date";
+     }
+-
++    $table = 'civicrm_action_log';
++    if (!empty($_REQUEST['action_preview'])) {
++      $table = 'civicrm_action_log_preview';
++    }
+     return $this->selectActionLogFields($phase, $query)
+-      ->insertInto('civicrm_action_log', $actionLogColumns);
++      ->insertInto($table, $actionLogColumns);
+   }
+ 
+   /**

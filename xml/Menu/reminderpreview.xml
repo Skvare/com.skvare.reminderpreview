@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<menu>
+  <item>
+    <path>civicrm/admin/scheduleReminders/preview</path>
+    <page_callback>CRM_Reminderpreview_Form_Preview</page_callback>
+    <title>Reminder Preview</title>
+    <access_arguments>administer CiviCRM</access_arguments>
+  </item>
+</menu>
