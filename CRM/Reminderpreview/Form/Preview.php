@@ -122,7 +122,9 @@ class CRM_Reminderpreview_Form_Preview extends CRM_Core_Form {
       $finalReport[] = $rowData;
     }
     if (empty($finalReport)) {
-      CRM_Core_Session::setStatus(E::ts('No data available'), 'Error', 'info');
+      CRM_Core_Session::setStatus(E::ts('No data available'), 'Info', 'info');
+
+      return;
     }
     $fileName = 'Reminder_Preview.csv';
     $columnsHeader = ['Contact ID', 'Contact ype', 'Display Name', 'Email'];
